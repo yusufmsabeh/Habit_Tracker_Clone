@@ -176,8 +176,6 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Container(
             color: const Color.fromARGB(255, 240, 240, 240),
-            child: currentIndex == 0
-                ? AllHabits()
-                : TodayScreen(tableHeight, now)));
+            child: currentIndex == 0 ? AllHabits() : TodayScreen(tableHeight)));
   }
 }

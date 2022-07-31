@@ -63,11 +63,11 @@ class connection extends ChangeNotifier {
     return habit.copy(id: id);
   }
 
-  Future<List<Habit>> realAllHaibtsByDay() async {
+  Future<List<Habit>> realAllHaibtsByDay(DateTime dateTime) async {
     final db = await instance.database;
 
     final habitsId = await db.query('habits_days',
-        columns: ['id'], where: 'day =?', whereArgs: [DateTime.now().weekday]);
+        columns: ['id'], where: 'day =?', whereArgs: [dateTime.weekday]);
 
     List<dynamic> idies = habitsId.map((e) => e['id']).toList();
     List<Habit> habits = [];

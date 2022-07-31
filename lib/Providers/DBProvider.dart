@@ -6,19 +6,22 @@ import 'package:habit_tracker/model/habit.dart';
 class DBProvider extends ChangeNotifier {
   List<Habit> allHabits = [];
   List<Habit> todayHabits = [];
+  DateTime dateTime = DateTime.now();
 
   DBProvider() {
     selectAllHabits();
   }
   fillHabits(List<Habit> allHabits, List<Habit> todayHabits) {
-    this.allHabits = allHabits;
     this.todayHabits = todayHabits;
+    this.allHabits = allHabits;
+
     notifyListeners();
   }
 
-  fillSpecDay(List<Habit> specDayHabits) {
-    this.todayHabits = specDayHabits;
+  changeDateTime(DateTime dateTime) {
+    this.dateTime = dateTime;
     notifyListeners();
+    selectAllHabits();
   }
 
   createHabit(Habit habit, var day) async {
@@ -27,16 +30,10 @@ class DBProvider extends ChangeNotifier {
   }
 
   selectAllHabits() async {
+    todayHabits = await connection.instance.realAllHaibtsByDay(dateTime);
     allHabits = await connection.instance.readAllHabits();
-    todayHabits = await connection.instance.realAllHaibtsByDay();
 
     fillHabits(allHabits, todayHabits);
-  }
-
-  selectSpcDay(var dateTime) async {
-    List<Habit> specDayHabits =
-        await connection.instance.realAllHaibtsBySpecDay(dateTime);
-    fillSpecDay(specDayHabits);
   }
 
   updateHabit(Habit habit, var days) async {

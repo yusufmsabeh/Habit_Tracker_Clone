@@ -12,10 +12,8 @@ import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class TodayScreen extends StatefulWidget {
-  DateTime dateTime;
-
   double todayHieght;
-  TodayScreen(this.todayHieght, this.dateTime);
+  TodayScreen(this.todayHieght);
 
   @override
   State<TodayScreen> createState() => _TodayScreenState();
@@ -43,13 +41,18 @@ class _TodayScreenState extends State<TodayScreen> {
             duration: const Duration(milliseconds: 500),
             child: SingleChildScrollView(
                 child: TableCalendar(
-              selectedDayPredicate: (day) => isSameDay(day, widget.dateTime),
+              selectedDayPredicate: (day) =>
+                  isSameDay(day, Provider.of<DBProvider>(context).dateTime),
               calendarStyle:
                   const CalendarStyle(rangeHighlightColor: Colors.red),
               rowHeight: 100.h,
               firstDay: DateTime.utc(2010, 10, 16),
               lastDay: DateTime.utc(2030, 3, 14),
-              focusedDay: DateTime.now(),
+              focusedDay: Provider.of<DBProvider>(context).dateTime,
+              onDaySelected: (selectedDay, focusedDay) {
+                Provider.of<DBProvider>(context, listen: false)
+                    .changeDateTime(selectedDay);
+              },
             )))
       ],
     );
