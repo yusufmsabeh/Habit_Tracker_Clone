@@ -12,9 +12,6 @@ import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class TodayScreen extends StatefulWidget {
-  double todayHieght;
-  TodayScreen(this.todayHieght);
-
   @override
   State<TodayScreen> createState() => _TodayScreenState();
 }
@@ -37,7 +34,7 @@ class _TodayScreenState extends State<TodayScreen> {
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 240, 240, 240),
             ),
-            height: widget.todayHieght,
+            height: Provider.of<DBProvider>(context).TableHeight,
             duration: const Duration(milliseconds: 500),
             child: SingleChildScrollView(
                 child: TableCalendar(

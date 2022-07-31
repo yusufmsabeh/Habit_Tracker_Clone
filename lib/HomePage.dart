@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:habit_tracker/DB/DBConaction.dart';
+import 'package:habit_tracker/Providers/DBProvider.dart';
 import 'package:habit_tracker/Screens/AddHabitScreen.dart';
 import 'package:habit_tracker/model/habit.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
 
 import 'Screens/AllHabits.dart';
 import 'Screens/TodayScreen.dart';
@@ -22,8 +24,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
-  double tableHeight = 0;
-  DateTime now = DateTime.now();
+
   //Widget CurrentLeading = Text("HabitList".tr());
 
   @override
@@ -82,9 +83,8 @@ class _HomePageState extends State<HomePage> {
           leading: currentIndex == 1
               ? GestureDetector(
                   onTap: () {
-                    tableHeight == 0 ? tableHeight = 700.h : tableHeight = 0.h;
-                    print("pressing button");
-                    setState(() {});
+                    Provider.of<DBProvider>(context, listen: false)
+                        .changeTableHieght();
                   },
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: 40.w),
@@ -176,6 +176,6 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Container(
             color: const Color.fromARGB(255, 240, 240, 240),
-            child: currentIndex == 0 ? AllHabits() : TodayScreen(tableHeight)));
+            child: currentIndex == 0 ? AllHabits() : TodayScreen()));
   }
 }

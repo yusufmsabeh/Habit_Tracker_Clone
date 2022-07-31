@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/DB/DBConaction.dart';
 import 'package:habit_tracker/model/habit.dart';
 
@@ -7,6 +8,7 @@ class DBProvider extends ChangeNotifier {
   List<Habit> allHabits = [];
   List<Habit> todayHabits = [];
   DateTime dateTime = DateTime.now();
+  double TableHeight = 0;
 
   DBProvider() {
     selectAllHabits();
@@ -22,6 +24,11 @@ class DBProvider extends ChangeNotifier {
     this.dateTime = dateTime;
     notifyListeners();
     selectAllHabits();
+  }
+
+  changeTableHieght() {
+    TableHeight == 0 ? TableHeight = 700.h : TableHeight = 0.h;
+    notifyListeners();
   }
 
   createHabit(Habit habit, var day) async {
