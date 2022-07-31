@@ -80,7 +80,7 @@ class connection extends ChangeNotifier {
           whereArgs: [element as int]);
       habits.add(Habit.fromJson(habitById[0]));
     });
-
+    print("----------------------" + habits.toString());
     return habits;
   }
 

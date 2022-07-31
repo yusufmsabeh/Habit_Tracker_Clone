@@ -29,6 +29,7 @@ class DBProvider extends ChangeNotifier {
   selectAllHabits() async {
     allHabits = await connection.instance.readAllHabits();
     todayHabits = await connection.instance.realAllHaibtsByDay();
+
     fillHabits(allHabits, todayHabits);
   }
 

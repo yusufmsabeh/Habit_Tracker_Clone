@@ -8,8 +8,10 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:habit_tracker/DB/DBConaction.dart';
+import 'package:habit_tracker/Providers/DBProvider.dart';
 import 'package:habit_tracker/Screens/CongratsScreen.dart';
 import 'package:habit_tracker/model/habit.dart';
+import 'package:provider/provider.dart';
 
 class TodayHabit extends StatelessWidget {
   Habit habit;
@@ -23,10 +25,10 @@ class TodayHabit extends StatelessWidget {
 
     return InkWell(
       onTap: () async {
-        log(DateTime.now().toString());
-        await connection.instance.updateDone(habit.id);
+        Provider.of<DBProvider>(context, listen: false).updateDone(habit.id!);
         if (habit.done! >= habit.target - 1) {
-          await connection.instance.deleteHabit(habit.id);
+          Provider.of<DBProvider>(context, listen: false)
+              .deleteHabit(habit.id!);
           showDialog(
               context: context,
               builder: (context) => CongratsScreen(
