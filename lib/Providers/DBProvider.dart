@@ -9,6 +9,7 @@ class DBProvider extends ChangeNotifier {
   List<Habit> todayHabits = [];
   DateTime dateTime = DateTime.now();
   double TableHeight = 0;
+  int currentIndex = 0;
 
   DBProvider() {
     selectAllHabits();
@@ -17,6 +18,11 @@ class DBProvider extends ChangeNotifier {
     this.todayHabits = todayHabits;
     this.allHabits = allHabits;
 
+    notifyListeners();
+  }
+
+  changeCurrentIndex(int value) {
+    currentIndex = value;
     notifyListeners();
   }
 

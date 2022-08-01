@@ -23,8 +23,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int currentIndex = 0;
-
   //Widget CurrentLeading = Text("HabitList".tr());
 
   @override
@@ -80,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                 ))
           ],
           leadingWidth: 600.w,
-          leading: currentIndex == 1
+          leading: Provider.of<DBProvider>(context).currentIndex == 1
               ? GestureDetector(
                   onTap: () {
                     Provider.of<DBProvider>(context, listen: false)
@@ -128,8 +126,9 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      currentIndex = 0;
-                      setState(() {});
+                      Provider.of<DBProvider>(context, listen: false)
+                          .changeCurrentIndex(0);
+                      print("Changethe curreintindex");
                     },
                     child: SizedBox(
                       width: 200.w,
@@ -138,9 +137,12 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                               width: 70.w,
                               height: 70.h,
-                              child: Image.asset(currentIndex == 0
-                                  ? 'assets/menuSelected.png'
-                                  : 'assets/menu.png')),
+                              child: Image.asset(
+                                  Provider.of<DBProvider>(context)
+                                              .currentIndex ==
+                                          0
+                                      ? 'assets/menuSelected.png'
+                                      : 'assets/menu.png')),
                           Text("AllHabits".tr())
                         ],
                       ),
@@ -151,8 +153,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      currentIndex = 1;
-                      setState(() {});
+                      Provider.of<DBProvider>(context, listen: false)
+                          .changeCurrentIndex(1);
+                      print("Changeing the current index to 1");
                     },
                     child: SizedBox(
                       width: 200.w,
@@ -161,9 +164,12 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                               width: 70.w,
                               height: 70.h,
-                              child: Image.asset(currentIndex == 1
-                                  ? 'assets/todaySelected.png'
-                                  : 'assets/today.png')),
+                              child: Image.asset(
+                                  Provider.of<DBProvider>(context)
+                                              .currentIndex ==
+                                          1
+                                      ? 'assets/todaySelected.png'
+                                      : 'assets/today.png')),
                           Text("TodayList".tr())
                         ],
                       ),
@@ -176,6 +182,8 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Container(
             color: const Color.fromARGB(255, 240, 240, 240),
-            child: currentIndex == 0 ? AllHabits() : TodayScreen()));
+            child: Provider.of<DBProvider>(context).currentIndex == 0
+                ? AllHabits()
+                : TodayScreen()));
   }
 }

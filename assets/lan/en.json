@@ -26,5 +26,11 @@
     "YouMadeProgress": "You made Progress",
     "Required": "This field is required",
     "Zerofield": "The target can not be zero",
-    "Badge": "Badge"
+    "Badge": "Badge",
+    "TargetEdit": "Invalid value",
+    "Other": "Other",
+    "Sports": "Sports",
+    "Studying": "Studying",
+    "Drink water": "Drink water",
+    "Eat healthy food": "Eat healthy food"
 }

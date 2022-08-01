@@ -85,6 +85,7 @@ flutter:
     - assets/animations/empty.json
     - assets/lan/ar.json
     - assets/lan/en.json
+    - assets/logo.png
     
 
   

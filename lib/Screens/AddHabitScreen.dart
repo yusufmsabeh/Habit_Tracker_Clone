@@ -29,11 +29,11 @@ class _AddHabitScreenState extends State<AddHabitScreen> {
     'assets/healthy-food.png'
   ];
   List<String> itemsDropDownString = [
-    'other',
-    'sports',
-    'studying',
-    'drink Water',
-    'eat healthy food'
+    'Other',
+    'Sports',
+    'Studying',
+    'Drink water',
+    'Eat healthy food'
   ];
   String? selectedItem;
   final nameController = TextEditingController();
@@ -166,6 +166,11 @@ class _AddHabitScreenState extends State<AddHabitScreen> {
                             return 'Required'.tr();
                           else if (int.parse(value) == 0)
                             return 'Zerofield'.tr();
+                          else if (widget.habit != null) {
+                            if (int.parse(value) <= widget.habit!.done!) {
+                              return 'TargetEdit'.tr();
+                            }
+                          }
                         },
                         controller: tragetController,
                         keyboardType: const TextInputType.numberWithOptions(),
@@ -212,7 +217,8 @@ class _AddHabitScreenState extends State<AddHabitScreen> {
                                   width: 40.w,
                                 ),
                                 Text(itemsDropDownString[
-                                    itemsDropDown.indexOf(e)])
+                                        itemsDropDown.indexOf(e)]
+                                    .tr())
                               ],
                             ),
                             value: e,

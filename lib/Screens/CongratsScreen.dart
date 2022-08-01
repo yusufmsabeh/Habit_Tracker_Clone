@@ -18,7 +18,7 @@ class CongratsScreen extends StatelessWidget {
       child: Container(
           padding: EdgeInsets.all(50.w),
           width: double.infinity,
-          height: 1250.h,
+          height: 1300.h,
           child: Column(
             children: [
               Text(

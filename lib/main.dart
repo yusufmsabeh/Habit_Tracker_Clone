@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/DB/DBConaction.dart';
 import 'package:habit_tracker/HomePage.dart';
 import 'package:habit_tracker/Providers/DBProvider.dart';
+import 'package:habit_tracker/Screens/SplashScreen.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: context.supportedLocales,
             locale: context.locale,
             debugShowCheckedModeBanner: false,
-            home: const HomePage(),
+            home: const SplashScreen(),
           );
         });
   }

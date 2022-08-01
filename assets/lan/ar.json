@@ -1,7 +1,7 @@
 {
     "HabitList": "قائمة الهوايات",
     "AddNewHabit": "اضافة هواية جديدة+",
-    "AllHabits": "جميع الهوايات",
+    "AllHabits": "كل الهوايات",
     "TodayList": "اليوم",
     "NoHabits": "لا يوجد هوايات لليوم",
     "AddSomething": "تريد أضافة هواية؟",
@@ -22,9 +22,15 @@
     "Preogresss": "التقدم",
     "Congrats": "مبرووك!",
     "Completed": "مكتملة",
-    "DoneAndDelete": "اكتملت و احذف",
+    "DoneAndDelete": "اكتملت, حذف",
     "YouMadeProgress": "لقد احرزت تقدم",
     "Required": "هذه القيمة مطلوبة",
     "Zerofield": "الهدف لا يمكن ان يكون صفر",
-    "Badge": "التصنيف"
+    "Badge": "التصنيف",
+    "TargetEdit": "قيمة خاطئة",
+    "Other": "اخرى",
+    "Sports": "رياضة",
+    "Studying": "دراسة",
+    "Drink water": "شرب الماء",
+    "Eat healthy food": "تناول طعام صحي"
 }
