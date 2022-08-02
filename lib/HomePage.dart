@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             margin: context.locale.toString() == 'en'
                 ? EdgeInsets.only(right: 290.w)
-                : EdgeInsets.only(left: 290.w),
+                : EdgeInsets.only(left: 250.w),
             height: 100.h,
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             decoration: BoxDecoration(boxShadow: const [
@@ -105,13 +105,15 @@ class _HomePageState extends State<HomePage> {
                 )
               : Container(
                   width: double.infinity,
-                  margin: EdgeInsets.only(top: 30.w, right: 30.w),
+                  margin: context.locale.toString() == 'ar'
+                      ? EdgeInsets.only(top: 20.w, right: 30.w)
+                      : EdgeInsets.only(top: 20.w, left: 30.w),
                   child: Text(
                     'HabitList'.tr(),
                     style: TextStyle(
                         color: const Color.fromARGB(255, 112, 112, 112),
                         fontWeight: FontWeight.bold,
-                        fontSize: 70.sp),
+                        fontSize: 60.sp),
                   )),
           backgroundColor: const Color.fromARGB(255, 240, 240, 240),
           elevation: 0,
@@ -122,7 +124,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 150.w),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   GestureDetector(
                     onTap: () {
@@ -131,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                       print("Changethe curreintindex");
                     },
                     child: SizedBox(
-                      width: 200.w,
+                      // width: 100.w,
                       child: Column(
                         children: [
                           SizedBox(
@@ -148,17 +150,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                  const Spacer(
-                    flex: 1,
-                  ),
+                  const Spacer(),
                   GestureDetector(
                     onTap: () {
                       Provider.of<DBProvider>(context, listen: false)
                           .changeCurrentIndex(1);
-                      print("Changeing the current index to 1");
                     },
                     child: SizedBox(
-                      width: 200.w,
+                      // width: 100.w,
                       child: Column(
                         children: [
                           SizedBox(

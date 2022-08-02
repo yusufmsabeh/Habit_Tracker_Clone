@@ -20,12 +20,14 @@ class AllHabits extends StatefulWidget {
 class _AllHabitsState extends State<AllHabits> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        margin: EdgeInsets.symmetric(horizontal: 40.w),
-        child: ListView.builder(
-            itemCount: Provider.of<DBProvider>(context).allHabits.length,
-            itemBuilder: ((context, index) => HabitWidget(
-                  habit: Provider.of<DBProvider>(context).allHabits[index],
-                ))));
+    return Provider.of<DBProvider>(context).allHabits.isEmpty
+        ? Center(child: Lottie.asset('assets/animations/empty.json'))
+        : Container(
+            margin: EdgeInsets.symmetric(horizontal: 40.w),
+            child: ListView.builder(
+                itemCount: Provider.of<DBProvider>(context).allHabits.length,
+                itemBuilder: ((context, index) => HabitWidget(
+                      habit: Provider.of<DBProvider>(context).allHabits[index],
+                    ))));
   }
 }

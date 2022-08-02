@@ -35,9 +35,14 @@ class TodayHabit extends StatelessWidget {
                     habitName: habit.name,
                   ));
         }
-
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("YouMadeProgress".tr())));
+        Fluttertoast.showToast(
+          msg: 'YouMadeProgress'.tr(),
+          toastLength: Toast.LENGTH_SHORT, // length
+          gravity: ToastGravity.BOTTOM, // location
+          // duration
+        );
+        // ScaffoldMessenger.of(context)
+        //     .showSnackBar(SnackBar(content: Text("YouMadeProgress".tr())));
 
         // function();
       },

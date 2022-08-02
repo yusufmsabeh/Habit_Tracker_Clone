@@ -29,7 +29,7 @@ class HabitWidget extends StatelessWidget {
         }));
       },
       child: Container(
-        height: 500.h,
+        height: 400.h,
         margin: EdgeInsets.only(bottom: 50.w),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(40.r), color: Colors.white),
@@ -45,7 +45,7 @@ class HabitWidget extends StatelessWidget {
                   },
                   child: Container(
                     margin: EdgeInsets.all(30.w),
-                    height: 60.h,
+                    height: 50.h,
                     width: 60.w,
                     decoration: const BoxDecoration(
                         image: DecorationImage(
@@ -80,7 +80,7 @@ class HabitWidget extends StatelessWidget {
               children: [
                 SizedBox(
                     width: 500.w,
-                    height: 300.h,
+                    height: 250.h,
                     child: SfRadialGauge(
                       axes: <RadialAxis>[
                         RadialAxis(
