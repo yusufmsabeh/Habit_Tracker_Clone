@@ -22,7 +22,7 @@ class _TodayScreenState extends State<TodayScreen> {
     return Stack(
       children: [
         Provider.of<DBProvider>(context).todayHabits.isEmpty
-            ? const EmptyHabitScreen()
+            ? EmptyHabitScreen()
             : ListView.builder(
                 itemCount: Provider.of<DBProvider>(context).todayHabits.length,
                 itemBuilder: (context, index) {

@@ -21,7 +21,11 @@ class _AllHabitsState extends State<AllHabits> {
   @override
   Widget build(BuildContext context) {
     return Provider.of<DBProvider>(context).allHabits.isEmpty
-        ? Center(child: Lottie.asset('assets/animations/empty.json'))
+        ? Center(
+            child: Container(
+                width: 800.w,
+                height: 800.h,
+                child: Lottie.asset('assets/animations/empty.json')))
         : Container(
             margin: EdgeInsets.symmetric(horizontal: 40.w),
             child: ListView.builder(
